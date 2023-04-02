@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Movies from "./Movies";
 import { getStoredMovieList } from "../../utilities/localStorageFunctions";
 
-const Home = ({ list, setList }) => {
+const Home = ({ list, setList, currentUrl, setCurrentUrl }) => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
@@ -16,6 +16,7 @@ const Home = ({ list, setList }) => {
     apiKey +
     "&query=" +
     search;
+
 
   const searchMovie = () => {
     setIsLoading(true);
@@ -74,7 +75,7 @@ const Home = ({ list, setList }) => {
           <h1 className="text-3xl lg:text-4xl text-[#e1e1e1]">
             Popular movies right now
           </h1>
-          <Movies movies={movies} setList={setList} list={list} />
+          <Movies movies={movies} setList={setList} list={list} currentUrl={currentUrl} setCurrentUrl={setCurrentUrl} />
         </>
       )}
     </div>

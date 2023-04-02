@@ -8,16 +8,18 @@ const Sidenav = ({ navItems, setCurrentUrl, currentUrl, list, setList }) => {
   useEffect(() => {
     if (currentUrl === '/') {
       setSelectedNav(navItems[0])
-    } else {
+    } else if (currentUrl === '/history') {
       setSelectedNav(navItems[1])
+    } else {
+      setSelectedNav("")
     }
   }, [])
 
   return (
-    <div id="nav" className="px-6 lg:px-14 py-6 bg-black fixed left-0 h-screen w-[40%] lg:w-[25%] overflow-y-auto">
+    <div id="nav" className="px-2 lg:px-14 py-6 bg-black fixed left-0 h-screen w-[40%] lg:w-[25%] overflow-y-auto">
       <div className="border-b border-solid border-[#282828] pb-5 space-y-5">
         <div className="space-y-5">
-          <h1 className="font-extrabold text-2xl md:text-[40px] leading-[44px] text-center text-[#F33F3F] font-logo">
+          <h1 className="font-extrabold text-xl md:text-[40px] leading-[44px] text-center text-[#F33F3F] font-logo">
             Watchlists
           </h1>
           <input

@@ -5,11 +5,19 @@ import { addToDb } from "../../utilities/localStorageFunctions";
 
 import add from "../../assets/add.png";
 
-const Movies = ({ movies, setList, list }) => {
+const Movies = ({ movies, setList, list, currentUrl, setCurrentUrl }) => {
   const imageUrl = "https://image.tmdb.org/t/p/original";
 
+  // go to movie details page
+  const seeMovieDetails = (movie) => {
+    setCurrentUrl(`/movie/${movie.id}`);
+    window.history.pushState(null, null, `/movie/${movie.id}`);
+  };
+
   if (movies.length === 0) {
-    return <h1 className="text-center text-2xl text-red-300">No Movies Found</h1>;
+    return (
+      <h1 className="text-center text-2xl text-red-300">No Movies Found</h1>
+    );
   } else {
     return (
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-7 lg:gap-14">
@@ -42,7 +50,8 @@ const Movies = ({ movies, setList, list }) => {
                   src={imageUrl + poster_path || backdrop_path}
                   alt={title}
                   loading="lazy"
-                  className="h-[225px] w-full bg-slate-300"
+                  className="h-[225px] w-full bg-slate-300 cursor-pointer"
+                  onClick={() => seeMovieDetails(movie)}
                 />
                 <img
                   src={add}

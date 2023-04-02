@@ -31,7 +31,12 @@ function App() {
         list={list}
         setList={setList}
       ></Sidenav>
-      <MainLayout currentUrl={currentUrl} list={list} setList={setList}></MainLayout>
+      <MainLayout
+        currentUrl={currentUrl}
+        list={list}
+        setList={setList}
+        setCurrentUrl={setCurrentUrl}
+      ></MainLayout>
     </div>
   );
 }
